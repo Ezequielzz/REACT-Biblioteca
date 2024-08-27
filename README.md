@@ -3,19 +3,19 @@
 ## Método GET
 
 <div align="center">
-    <img src="/imgs/GET.png">
+    <img src="../imgs/GET.png">
 </div>
 
 ## Método POST
 
 <div align="center">
-    <img src="/imgs/POST.png">
+    <img src="../imgs/POST.png">
 </div>
 
 ## Método PUT
 
 <div align="center">
-    <img src="/imgs/PUT.png">
+    <img src="../imgs/PUT.png">
 </div>
 
  - **Observação:** foi necessário trocar a linha em livroRutes.js:
@@ -30,7 +30,7 @@
 ## Método DELETE
 
 <div align="center">
-    <img src="/imgs/DELETE.png">
+    <img src="../imgs/DELETE.png">
 </div>
 
  - **Observação:** foi necessário trocar a linha em livroController.js:
@@ -40,4 +40,4 @@
  para:
   ```
  await livro.deleteOne();
-  ```# REACT-Biblioteca
+  ``` 

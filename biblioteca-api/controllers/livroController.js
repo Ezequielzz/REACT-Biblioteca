@@ -96,20 +96,14 @@ exports.atualizarLivro = async (req, res) => {
 // Deletar um livro por ID
 exports.deletarLivro = async (req, res) => {
     try {
-        // Busca o livro pelo ID
         const livro = await Livro.findById(req.params.id);
         if (livro == null) {
-            // Se o livro não for encontrado, retorna status 404 (Não Encontrado)
             return res.status(404).json({ message: 'Livro não encontrado' });
         }
-
-
-        // Remove o livro do banco de dados
         await livro.deleteOne();
-        // Retorna uma mensagem de sucesso
         res.json({ message: 'Livro deletado com sucesso' });
     } catch (err) {
-        // Em caso de erro, retorna uma mensagem de erro com status 500 (Internal Server Error)
+        console.error("Erro ao deletar livro:", err);
         res.status(500).json({ message: err.message });
     }
 };

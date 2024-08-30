@@ -4,19 +4,19 @@ export const TodoForm = ({ addTodo }) => {
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [ano, setAno] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [genero, setGenero] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
 
     // Enviar os dados no formato esperado pela API
-    addTodo({ titulo, autor, ano, categoria });
+    addTodo({ titulo, autor, ano, genero });
 
     // Limpar os campos do formulário
     setTitulo("");
     setAutor("");
     setAno("");
-    setCategoria("");
+    setGenero("");
   }
 
   return (
@@ -45,10 +45,11 @@ export const TodoForm = ({ addTodo }) => {
       <input
         type="text"
         className='todo-input'
-        value={categoria}
-        placeholder='Categoria do livro'
-        onChange={(e) => setCategoria(e.target.value)}
+        value={genero}
+        placeholder='Gênero do livro'
+        onChange={(e) => setGenero(e.target.value)}
       />
+      <br />
       <button type='submit' className='todo-btn'>Adicionar Livro</button>
     </form>
   )

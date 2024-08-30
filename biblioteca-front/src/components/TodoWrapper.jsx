@@ -3,7 +3,6 @@ import { TodoForm } from './TodoForm'
 import { Todo } from './Todo';
 import axios from 'axios';
 import { EditTodoForm } from './EditTodoForm';
-import { v4 as uuidv4 } from 'uuid';
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -27,7 +26,7 @@ export const TodoWrapper = () => {
         titulo: novoLivro.titulo,
         autor: novoLivro.autor,
         ano: novoLivro.ano,
-        categoria: novoLivro.categoria
+        genero: novoLivro.genero
       });
       setTodos([...todos, response.data]);
     } catch (error) {
@@ -38,20 +37,20 @@ export const TodoWrapper = () => {
   const deleteTodo = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/livros/${id}`);
-      setTodos(todos.filter(todo => todo.id !== id));
+      setTodos(todos.filter(todo => todo._id !== id));
     } catch (error) {
       console.error("Erro ao deletar livro:", error);
     }
   }
 
   const editTodo = id => {
-    setTodos(todos.map(todo => todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo));
+    setTodos(todos.map(todo => todo._id === id ? { ...todo, isEditing: !todo.isEditing } : todo));
   }
 
-  const editTask = async (task, id) => {
+  const editTask = async (updatedTask, id) => {
     try {
-      const response = await axios.put(`http://localhost:3000/livros/${id}`, { task });
-      setTodos(todos.map(todo => todo.id === id ? { ...response.data, isEditing: !todo.isEditing } : todo));
+      const response = await axios.put(`http://localhost:3000/livros/${id}`, updatedTask);
+      setTodos(todos.map(todo => todo._id === id ? { ...response.data, isEditing: !todo.isEditing } : todo));
     } catch (error) {
       console.error("Erro ao editar o livro:", error);
     }

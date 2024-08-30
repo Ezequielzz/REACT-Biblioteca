@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 require('./config/database'); // Conectando ao banco de dados
 
-const corsOptions = {origin:"http://localhost:5173"};
+const corsOptions = {origin:"http://localhost:3000"};
 
 const app = express();
 
